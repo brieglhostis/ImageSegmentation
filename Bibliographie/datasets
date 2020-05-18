@@ -1,0 +1,9 @@
+#Premier dataset
+Ce dataset contient des images de chiens et de chats labellisés et avec des trimap donnant la segmentation
+Lien : https://www.robots.ox.ac.uk/~vgg/data/pets/
+
+#Deuxième dataset
+Lien : https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/BSDS300/html/dataset/images.html
+
+#Troisième dataset
+Lien : http://host.robots.ox.ac.uk/pascal/VOC/

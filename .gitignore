@@ -1,0 +1,6 @@
+/data/Pets
+/code/Pets
+.venv
+/code/__pycache__/
+/code/.vscode
+/code/graph_segmentation.pyc

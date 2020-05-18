@@ -1,0 +1,5 @@
+Scipy
+Numpy
+os.path
+opencv-python
+time

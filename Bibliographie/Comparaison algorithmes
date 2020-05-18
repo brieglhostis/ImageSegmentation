@@ -1,0 +1,101 @@
+Algorithmes :
+
+- Intensity based segmentation (segmentation par seuil d'intensité) : 
+
+    Avantages :
+        - Complexité très faible
+        - Rapide et simple à implémenter
+        - Fonctionne pour les applications en temps réel
+    
+    Inconvénients :
+        - Néglige l'inforamtion spatiale de l'image
+        - Très sensible au bruit
+        - La sélection du seuil est cruciale pour éviter la sur ou sous segmentation
+        - Peut mener à des bords manquant ou des pseudo bords (bords n'existant pas sur l'image)
+    
+- Discontinuity based segmentation (segmentation par identification de discontinuités/bords)
+    Différents opérateurs sont utilisés pour caractériser la discontinuité utilisant des dérirvées de premier ou second ordre.
+    Opérateurs de premier ordre : opérateur de Robert, opérateur de Prewitt, opérateur de Sobel et masque de Frei-Chen
+    Opérateurs de second ordre : Laplacien de l'opérateur Gaussien et Canny Edge Operator
+
+    Avantages :
+        - Les opérateurs de second ordres donnent des résultats sûrs
+        - Permet d'obtenir le nombre d'objets dans une image
+    
+    Inconvénients :
+        - Le choix de l'opérateur dépend de la nature de l'image et un opérateur de permet pas d'obtenir un résultat satisfaisant dans tous les cas
+        - La complexité augmente avec la taille de l'opérateur
+        - Les bords obtenus sont souvent discontinus
+    
+- Region based segmentation (segmentation par identification locale de régions)
+    Les méthodes sont : Seeded Region Growing method (SRG), Unseeded Region Growing method et Region Split and Merge method
+
+    Avantages :
+        - Donne des résultats plus satisfaisant que les précédentes méthodes
+        - Permet de choisir entre des méthodes intéractives ou automatiques
+        - Permet d'obtenir des bords plus propres pour les objets
+        - Si les bons pixels sont sélectionnés comme graines (pixels initiant les régions dans le cas non automatique) alors les résultats sont beaucoup plus précis que pour les alogrithmes précédents
+        - Heuristique permettant d'affiner les résultats excellent en vidéo
+        
+    Inconvénients :
+        - La formulation d'une règle de fin de programme peu être compliquée
+        - Dépend fortement de l'initialisation (des pixels initiant des régions)
+        - La sélection des graines requiert une sélection manuelle pour éviter les erreurs
+        - Résultats parfois érronés en image fixe
+    
+- Clustering based segmentation
+    Inclue les algorithmes K-Mean, K-Clustering et FCM (Fuzzy C-Means)
+
+    Avantages :
+        - Donne des résultats précis
+        - Peut prendre en compte la géométrie de l'image pour obtenir une meilleur segmentation selon les cas
+    
+    Inconvénients :
+        - Pour les algorithmes K-means et K-clustering, il faut spécifier le nombre de clusters
+        - L'efficacité est fortement dépendante du type d'image et de la caractéristique utiliser pour créer les clusters
+    
+- Watershed segmentation (mélange de clustering et de seuils)
+
+    Avantages :
+        - Hérite des qualités du clsutering
+        - Donne de meilleurs performances
+        - Donne des bords continus
+    
+    Inconvénients :
+        - La méthodes souffre de sur-segmentation, ainsi il faut utiliser un algorithme de post-processing pour reconstituer les segments
+        - La complexité est élevée
+        - Rencontre des difficultés dans les parties floues de l'image
+
+
+- Graph based segmentation (segmentation par représentation sous forme de graphes)
+
+    Avantages :
+        - Algorithme plus efficace en termes de calculs
+        - Ne nécessite pas de discrétisation de fonction (comme pour les opérateurs des segmentations par étude de discontinuités) et permet d'éviter les erreurs de discrétisation
+
+- Neural Network :
+    
+    Avantages :
+        -Résultats très probant
+        -Execution très rapide
+    
+    Inconvénients :
+        -Phase d'apprentissage longue
+        -Même type de document nécessaire.
+        
+        
+- Champs de Markov :
+    
+    Avantages :
+        -Bon résultats
+        -Robuste à la variabilité des documents
+        
+    Inconvénients :
+        -Présence de constantes à ajuster, donc on doit traiter toujours le même type de document
+        -Prise en compte du bruit de l'image pas facile
+
+
+Sources :
+
+Image Segmentation Methods : A Comparative Study- International Journal of Soft Computing and Engineering - by A.M. Khan & Ravi. S - September 2013 - https://www.researchgate.net/publication/319183397_Image_Segmentation_Methods_A_Comparative_Study - lu le 18/11/2019
+Segmentation d’imageApplication aux documents anciens - LABORATOIRE DES SCIENCES DE L’INFORMATION ET DES SYSTÈMES - Frédéric   BOUCHARA, Elisabeth MURISASCO, Emmanuel BRUNO - https://web.imt-atlantique.fr/x-info/ald/rapports_bib/lelore07.pdf
